@@ -1,0 +1,186 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	background-color: #222;
+}
+
+.lobby,
+.game-details {
+    margin: 0 15px 15px;
+    min-width: 320px; 
+    .isDead {
+        text-decoration: line-through;
+        color: rgb(182, 182, 182);
+    }
+}
+.game-header {
+    background: radial-gradient(49.25% 780.08% at 50.75% 51%,#a0200f 0,#8c1a0a 100%);
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: 500; 
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.lobby {
+    display: table;
+    .thead {
+        display: table-header-group;
+        background: radial-gradient(49.25% 780.08% at 50.75% 51%,#a0200f 0,#8c1a0a 100%);
+        font-size: 12px;
+        color: #fff;
+        font-weight: 500;
+        > div {
+            display: table-cell;
+            padding: 7px 10px;
+        }
+    }
+}
+
+
+.game,
+.player {
+    display: flex;
+    margin: 5px 5px 10px;
+    width: 100%;
+    display: table-row;
+    font-size: 12px;
+	line-height: 32px;
+	font-family: Arial, Tahoma, sans-serif;
+	color: #fff;
+	border-collapse: collapse;
+	min-width: 450px;
+    .ava {
+        border: none;
+        border-radius: 10px;
+        width: 22px;
+        height: 22px;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+}
+
+.game {
+    display: table-row;
+
+    &:hover {
+        background-color: #000;
+        cursor: pointer;
+        transition: background .3s;
+    }
+
+    > div {
+        display: table-cell;
+        padding: 0 5px;
+    }
+    .title {
+        min-width: 250px;
+        line-height: 15px;
+    }
+    .author {
+        min-width: 150px;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* blinking */
+@keyframes blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.dot {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    margin-bottom: 3px;
+}
+
+.green-dot {
+    background-color: chartreuse;
+    animation: blink 2s infinite;
+}
+
+.red-dot {
+    background-color: crimson;
+}
+ /* end blinking */
+
+.game-buttom-controll {
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding-top: 15px;
+    .button1,
+    .button2 {
+        display: inline-block;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        text-decoration: 5px;
+    }
+    .button1 {
+        background-color:rgb(73, 73, 73);
+    }
+    .button2 {
+        background-color: dodgerblue;
+    }
+}
+
+.settings-wrap {
+    min-width: 300px;
+    padding: 20px;
+    color: #fff;
+    a {
+        color: #fff;
+    }
+}
+
+.settings-row {
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.settings-row+.settings-row {
+    margin-top: 20px;
+}
+
+
+/** Tabs */
+.tabs-component {
+  margin: 0;
+}
+
+.tabs-component-tabs {
+    text-align: right;
+}
+
+.tabs-component-tab, tabs-component-tab-a {
+  a {
+    font-size: 12px;
+    color: #fff;
+  }
+  margin-right: 0;
+  list-style: none;
+  display: inline-block;
+  padding: 15px;
+  border-radius: 5px 5px 0 0;
+}
+
+.message-warning {
+    background-color: rgb(165, 9, 40);
+    color: #fff;
+    border: 1px dashed rgb(165, 9, 40);
+    padding: 10px;
+    border-radius: 5px;
+}

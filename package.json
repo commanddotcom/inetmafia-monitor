@@ -1,0 +1,30 @@
+{
+  "name": "inetmafia",
+  "version": "1.0.0",
+  "description": "Monitoring game lobby",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack build",
+    "watch": "webpack watch"
+  },
+  "author": "Yevgen Sh.",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "css": "^3.0.0",
+    "css-loader": "^6.2.0",
+    "sass": "^1.37.5",
+    "sass-loader": "^12.1.0",
+    "scss-loader": "0.0.1",
+    "style-loader": "^3.2.1",
+    "vue": "^2.6.14",
+    "vue-loader": "^15.9.8",
+    "vue-switches": "^2.0.1",
+    "vue-tabs-component": "^1.5.0",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "devDependencies": {
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.8.0"
+  }
+}
