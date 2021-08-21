@@ -22,7 +22,7 @@ export default {
                 Ведущий: {{ gameDetails.author }}
             </div>
 
-            <div v-for="player in gameDetails.players.players" :key="player.id" class="player" v-if="gameDetails.author!=player.nick">
+            <div v-for="player in gameDetails.players.players" :key="player.id" class="player" v-if="gameDetails.isLobby || gameDetails.author!=player.nick">
                 <div :class="player.isDead ? 'isDead' : ''"><avatar :avatar="player.avatar"></avatar> {{ player.nick }}</div>
             </div>
 
