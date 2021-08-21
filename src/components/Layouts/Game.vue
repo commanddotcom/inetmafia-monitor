@@ -14,13 +14,15 @@ export default {
 <template>
     <div class="game-details">
         <div>
-            <div class="game-header">Стол # {{ gameDetails.id }} от {{ gameDetails.author }}</div>
-            <div class="game-header">
+            <div class="game-header">Стол # {{ gameDetails.id }} - 
                 <span v-if="gameDetails.title.length > maxTitleLength">{{ gameDetails.title.substring(0,maxTitleLength) }}...</span>
                 <span v-else>{{ gameDetails.title }} ({{ gameDetails.playersNotDead }}/{{ gameDetails.players.max }})</span>
             </div>
+            <div class="game-header">
+                Ведущий: {{ gameDetails.author }}
+            </div>
 
-            <div v-for="player in gameDetails.players.players" :key="player.id" class="player">
+            <div v-for="player in gameDetails.players.players" :key="player.id" class="player" v-if="gameDetails.author!=player.nick">
                 <div :class="player.isDead ? 'isDead' : ''"><avatar :avatar="player.avatar"></avatar> {{ player.nick }}</div>
             </div>
 
