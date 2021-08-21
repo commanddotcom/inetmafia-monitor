@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         save() {
-            window.close();
+            chrome.runtime.reload()
         }
     }
 }

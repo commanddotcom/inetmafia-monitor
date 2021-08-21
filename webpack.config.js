@@ -2,6 +2,14 @@
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
+  entry: {
+    main: './src/index.js',
+    fetch: './src/fetch.js',
+  },
+  output: {
+    filename: '[name].js',
+    path: __dirname + '/dist',
+  },
   module: {
     rules: [
         {

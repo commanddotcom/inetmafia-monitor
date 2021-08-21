@@ -9,15 +9,6 @@ export default {
     components: {
         Settings, Tabs, Tab
     },
-    created () {
-        if (!window.localStorage.appSettings) {
-            window.localStorage.appSettings = JSON.stringify({ // default values
-                enabledExtenstion: true,
-                enabledDisplayAutoGame: false,
-                interval: 3000
-            });
-        }
-    },
     data() {
         return {
             layout: View

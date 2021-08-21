@@ -2,8 +2,7 @@
 	"manifest_version": 2,
 	"name": "Inetmafia.ru",
 	"description": "Монитор лобби Inetmafia.ru",
-	"version": "2.0.2",
-	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+	"version": "2.0.3",
 	"browser_action": {
 		"default_icon": {
 			"19": "favicon.png",
@@ -13,12 +12,11 @@
 		"default_popup": "popup.html"
 	},
 	"background": {
-		"page": "popup.html"
+		"scripts": ["fetch.js"]
 	},
 	"permissions": [
 		"http://inetmafia.ru/*",
-		"https://inetmafia.ru/*",
-		"https://ssl.google-analytics.com/*"
+		"https://inetmafia.ru/*"
 	],
 	"icons": {
 		"16": "favicon.png",
