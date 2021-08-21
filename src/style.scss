@@ -24,6 +24,9 @@ body {
     padding: 5px;
     margin-bottom: 5px;
 }
+.game-header.secondary {
+    background: radial-gradient(49.25% 780.08% at 50.75% 51%,#646464 0,#494949 100%);
+}
 .lobby {
     display: table;
     .thead {

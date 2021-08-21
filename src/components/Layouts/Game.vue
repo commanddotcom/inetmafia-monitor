@@ -18,7 +18,7 @@ export default {
                 <span v-if="gameDetails.title.length > maxTitleLength">{{ gameDetails.title.substring(0,maxTitleLength) }}...</span>
                 <span v-else>{{ gameDetails.title }} ({{ gameDetails.playersNotDead }}/{{ gameDetails.players.max }})</span>
             </div>
-            <div class="game-header">
+            <div class="game-header secondary" v-if="!gameDetails.isLobby">
                 Ведущий: {{ gameDetails.author }}
             </div>
 
