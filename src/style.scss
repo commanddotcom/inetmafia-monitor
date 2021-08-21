@@ -163,18 +163,27 @@ body {
 
 .tabs-component-tabs {
     text-align: right;
+    background-color: #222;
+    box-shadow: inset 0px -10px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid #222;
 }
 
-.tabs-component-tab, tabs-component-tab-a {
-  a {
+.tabs-component-tab.is-active {
+    background-color: #222;
+    box-shadow: none;
+}
+.tabs-component-tab {
+    border-left: 1px solid #1a1a1a;
+    background: transparent;
+    a {
     font-size: 12px;
     color: #fff;
-  }
-  margin-right: 0;
-  list-style: none;
-  display: inline-block;
-  padding: 15px;
-  border-radius: 5px 5px 0 0;
+    }
+    margin-right: 0;
+    list-style: none;
+    display: inline-block;
+    padding: 15px;
+    border-radius: 5px 0 0 0;
 }
 
 .message-warning {
