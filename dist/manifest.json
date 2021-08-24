@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Inetmafia.ru",
 	"description": "Монитор лобби Inetmafia.ru",
-	"version": "2.0.6",
+	"version": "2.0.7",
 	"browser_action": {
 		"default_icon": {
 			"19": "favicon.png",
