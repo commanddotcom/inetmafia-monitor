@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Inetmafia.ru",
 	"description": "Монитор лобби Inetmafia.ru",
-	"version": "2.0.9",
+	"version": "2.0.10",
 	"content_security_policy": "script-src 'self' https://www.google-analytics.com/; object-src 'self'", 
 	"browser_action": {
 		"default_icon": {
@@ -24,5 +24,6 @@
 		"16": "favicon.png",
 		"48": "favicon.png",
 		"128": "favicon.png"
-	}
+	},
+	"web_accessible_resources": ["manifest.json"]
 }
