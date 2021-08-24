@@ -35,10 +35,12 @@ export default {
             clearInterval(this.timer);
         },
         openGame (details) {
+            this.$ga.pageview('/game/'+details.id);
             this.gameDetails = details;
             this.layout = Game;
         },
         closeGame () {
+            this.$ga.pageview('/lobby');
             this.gameDetails = false;
             this.layout = Lobby;
         }

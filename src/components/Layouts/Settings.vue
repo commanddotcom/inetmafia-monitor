@@ -25,6 +25,7 @@ export default {
     },
     methods: {
         save() {
+            this.$ga.pageview('/settings/save');
             chrome.runtime.reload()
         }
     }
