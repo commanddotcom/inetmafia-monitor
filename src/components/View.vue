@@ -1,34 +1,19 @@
 <script>
 import Lobby from './Layouts/Lobby.vue';
+import LobbySkeleton from './Layouts/LobbySkeleton.vue';
 import Game from './Layouts/Game.vue';
 
 export default {
     name: 'View',
-    data () {
-        return {
-            gameDetails: false,
-            lobbyList: [],
-            timer: '',
-            maxTitleLength: 32,
-            readLocalStorageIntarval: 1000,
-            layout: Lobby,
-            settings: JSON.parse(window.localStorage.appSettings)
-        }
-    },
-    created () {
-        if (!this.settings.enabledExtenstion) {
-            this.cancelAutoUpdate();
-        } else {
-            this.fetchLobby();
-            this.timer = setInterval(this.fetchLobby, this.readLocalStorageIntarval);
-        }
-    },
     components: {
         lobby: Lobby,
         game: Game,
     },
     methods: {
         fetchLobby() {
+            if (this.layout === LobbySkeleton) {
+                this.layout = Lobby;
+            }
             this.lobbyList = JSON.parse(window.localStorage.lobby);
         },
         cancelAutoUpdate () {
@@ -45,6 +30,25 @@ export default {
             this.layout = Lobby;
         }
     },
+    data () {
+        return {
+            gameDetails: false,
+            lobbyList: [],
+            timer: '',
+            maxTitleLength: 32,
+            readLocalStorageIntarval: 1000,
+            layout: LobbySkeleton,
+            settings: JSON.parse(window.localStorage.appSettings)
+        }
+    },
+    mounted () {
+        if (!this.settings.enabledExtenstion) {
+            this.lobbyList = JSON.parse(window.localStorage.lobby);
+            this.cancelAutoUpdate();
+        } else {
+            this.timer = setInterval(this.fetchLobby, this.readLocalStorageIntarval);
+        }
+    },
     beforeDestroy () {
         this.cancelAutoUpdate();
     },
@@ -53,6 +57,6 @@ export default {
 
 <template>
     <div>
-        <component :is="layout" :lobbyList="lobbyList" :gameDetails="gameDetails" :gameID="gameID" :maxTitleLength="maxTitleLength" @openGame="openGame" @closeGame="closeGame"></component>
+        <component :is="layout" :settings="settings" :lobbyList="lobbyList" :gameDetails="gameDetails" :gameID="gameID" :maxTitleLength="maxTitleLength" @openGame="openGame" @closeGame="closeGame"></component>
     </div>
 </template>
