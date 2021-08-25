@@ -11,10 +11,10 @@ export default {
     },
     methods: {
         fetchLobby() {
+            this.lobbyList = JSON.parse(window.localStorage.lobby);
             if (this.layout === LobbySkeleton) {
                 this.layout = Lobby;
             }
-            this.lobbyList = JSON.parse(window.localStorage.lobby);
         },
         cancelAutoUpdate () {
             clearInterval(this.timer);
