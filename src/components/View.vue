@@ -5,10 +5,6 @@ import Game from './Layouts/Game.vue';
 
 export default {
     name: 'View',
-    components: {
-        lobby: Lobby,
-        game: Game,
-    },
     methods: {
         fetchLobby() {
             this.lobbyList = JSON.parse(window.localStorage.lobby);
