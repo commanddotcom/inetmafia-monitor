@@ -4,7 +4,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
   entry: {
     main: './src/index.js',
-    fetch: './src/fetch.js',
+    background: './src/background.js',
   },
   output: {
     filename: '[name].js',

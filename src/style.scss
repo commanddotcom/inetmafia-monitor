@@ -129,12 +129,30 @@ body {
         border-radius: 5px;
         padding: 10px;
         text-decoration: 5px;
+        &:hover {
+            opacity: .8;
+        }
     }
     .button1 {
         background-color:rgb(73, 73, 73);
     }
     .button2 {
         background-color: dodgerblue;
+    }
+    > div {
+        margin: 0 5px;
+    }
+    .bell svg {
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+        fill: #fff;
+        padding-right: 7px;
+        margin-right: 5px;
+        border-right: 1px solid #777;
+    }
+    .active .bell svg {
+        fill: goldenrod;
     }
 }
 
@@ -194,6 +212,14 @@ body {
     background-color: rgb(165, 9, 40);
     color: #fff;
     border: 1px dashed rgb(165, 9, 40);
+    padding: 10px;
+    border-radius: 5px;
+}
+.message-info {
+    margin: 15px 5px 10px;
+    background-color: rgb(223, 233, 135);
+    color: #333;
+    border: 1px dashed rgb(250, 242, 130);
     padding: 10px;
     border-radius: 5px;
 }

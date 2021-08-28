@@ -1,3 +1,5 @@
+const ls = require('local-storage');
+
 const axios = require('axios');
 const endpoint = 'https://inetmafia.ru/api';
 const headers = {
@@ -9,19 +11,15 @@ const data = {
 };
 const minMembersOfActualTable = 2;
 
-if (!window.localStorage.appSettings) {
-    window.localStorage.appSettings = JSON.stringify({ // default values
+if (!ls('appSettings')) {
+    ls('appSettings', { // default values
         enabledExtenstion: true,
         enabledDisplayAutoGame: false,
         interval: 3000,
     });
 }
 
-var settings = JSON.parse(window.localStorage.appSettings);
-
-class Fetch {
-    lobbyList = [];
-    
+export default {
     fetchLobby() {
         return axios.post(endpoint, data, {
             headers: headers
@@ -29,7 +27,7 @@ class Fetch {
         .then((response) => {
             if (typeof response.data.data.lobby === 'object') {
                 this.lobbyList = response.data.data.lobby; 
-                let tablesToGo = 0
+                let tablesToGo = 0;
                 for(var k in this.lobbyList) {
                     
                     this.lobbyList[k].author_ = {
@@ -51,26 +49,21 @@ class Fetch {
                     }
                     this.lobbyList[k].playersNotDead = playersNotDead;
                 }
-                window.localStorage.lobby = JSON.stringify(this.lobbyList);
+                ls('lobby', this.lobbyList);
+
                 chrome.browserAction.setBadgeText({text: tablesToGo.toString()});
+
                 if (!tablesToGo) {
                     chrome.browserAction.setBadgeBackgroundColor({ color: [204, 204, 0, 255] });
                 } else {
                     chrome.browserAction.setBadgeBackgroundColor({ color: [0, 153, 0, 255] });
                 }
+                
+
             }
         })
         .catch((error) => {
             console.log(error);
         });
     }
-}
-
-if (settings.enabledExtenstion) {
-    const FetchInstance = new Fetch();
-    FetchInstance.fetchLobby();
-    setInterval(FetchInstance.fetchLobby, settings.interval);
-} else {
-    chrome.browserAction.setBadgeText({text: 'OFF'});
-    chrome.browserAction.setBadgeBackgroundColor({ color: [205, 0, 0, 255] });
 }

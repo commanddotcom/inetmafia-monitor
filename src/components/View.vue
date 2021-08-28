@@ -1,4 +1,5 @@
 <script>
+const ls = require('local-storage');
 import Lobby from './Layouts/Lobby.vue';
 import LobbySkeleton from './Layouts/LobbySkeleton.vue';
 import Game from './Layouts/Game.vue';
@@ -7,7 +8,7 @@ export default {
     name: 'View',
     methods: {
         fetchLobby() {
-            this.lobbyList = JSON.parse(window.localStorage.lobby);
+            this.lobbyList = ls('lobby');
             if (this.layout === LobbySkeleton) {
                 this.layout = Lobby;
             }
@@ -29,17 +30,16 @@ export default {
     data () {
         return {
             gameDetails: false,
-            lobbyList: [],
+            lobbyList: ls('lobby'),
             timer: '',
             maxTitleLength: 32,
             readLocalStorageIntarval: 1000,
             layout: LobbySkeleton,
-            settings: JSON.parse(window.localStorage.appSettings)
+            settings: ls('appSettings')
         }
     },
     mounted () {
         if (!this.settings.enabledExtenstion) {
-            this.lobbyList = JSON.parse(window.localStorage.lobby);
             this.cancelAutoUpdate();
         } else {
             this.timer = setInterval(this.fetchLobby, this.readLocalStorageIntarval);
