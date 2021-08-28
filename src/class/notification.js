@@ -63,13 +63,11 @@ export default {
             let index = lobby.map(function(e) { 
                 return typeof e !== 'object' ? false : e.id;
             }).indexOf(notifications[i].id);
-
             if (!notifications[i].isLobby && index === -1) {
                 messages.push({ title: `Стол № ${ notifications[i].id } завершен!`, message: notifications[i].title});
                 modified = true;
                 delete notifications[i];
-            }
-            if (notifications[i].isLobby && index === -1) {
+            } else if (notifications[i].isLobby && index === -1) {
                 modified = true;
                 delete notifications[i]; // clearing missed event
             }

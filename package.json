@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "css": "^3.0.0",
     "css-loader": "^6.2.0",
+    "local-storage": "^2.0.0",
     "sass": "^1.37.5",
     "sass-loader": "^12.1.0",
     "scss-loader": "0.0.1",

@@ -9,7 +9,7 @@ export default {
     props: ['lobbyList', 'gameDetails', 'maxTitleLength'],
     data: function() {
         return {
-           isWatched: Notification.checkIfNotificationExists(this.gameDetails.id);
+           isWatched: Notification.checkIfNotificationExists(this.gameDetails.id)
         }
     },
     methods: {
