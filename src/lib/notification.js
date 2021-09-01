@@ -1,5 +1,5 @@
 const relevantTimeShifft = 240; // 2 h
-const ls = require('local-storage');
+import ls from 'local-storage';
 
 export default {
     getNotifications() {
@@ -74,7 +74,6 @@ export default {
         }
 
         if (messages.length) { // show notification
-
             let notification = {
                 type: 'list',
                 title: 'Inetmafia.com',
@@ -84,9 +83,7 @@ export default {
                 items: messages,
                 iconUrl:'./favicon.png'
             };
-            
             chrome.notifications.create('', notification, function(id) {});
-
         }
 
         if (modified) { // save all modifications

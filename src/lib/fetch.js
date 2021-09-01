@@ -6,8 +6,23 @@ const headers = {
     'Content-Type': 'application/json',
 }
 const data = {
-    "query":"{\n  lobby{\n    id\n    title\n    author\n    type\n    lock\n    twitch\n    youtube\n    players\n    spectators\n    isLobby\n  }\n}",
-    "variables":{}
+    "query":
+    `{
+        lobby 
+        {
+            id
+            title
+            author
+            type
+            lock
+            twitch
+            youtube
+            players
+            spectators
+            isLobby
+        }
+    }`,
+    "variables": {}
 };
 const minMembersOfActualTable = 2;
 

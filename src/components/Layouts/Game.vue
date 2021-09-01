@@ -1,7 +1,7 @@
 <script>
 import avatar from '../Widget/avatar.vue'
 import bell from '../Widget/bell.vue'
-import Notification from './../../class/notification.js';
+import Notification from './../../lib/notification.js';
 
 export default {
     components: { avatar, bell },
