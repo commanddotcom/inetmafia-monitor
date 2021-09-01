@@ -2,7 +2,6 @@ import './style.scss';
 import Vue from "vue";
 import App from "./components/App.vue";
 
-
 /**
  * Google Analytic 
  */
@@ -13,7 +12,7 @@ Vue.prototype.$ga = {
     }
 };
 
-var _gaID = 'UA-9234509-20';
+const _gaID = 'UA-9234509-20';
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

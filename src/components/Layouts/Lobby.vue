@@ -30,7 +30,7 @@ export default {
                     <span v-else>{{ game.title }}</span>                
                 </div>
                 <div class="author"><avatar :avatar="game.author_.avatar"></avatar> {{ game.author }}</div>
-                <div class="text-center">{{ game.playersNotDead }}/{{ game.players.max }}</div>
+                <div class="text-center">{{ game.isLobby ? game.playersNotDead : (game.playersNotDead-1) }}/{{ game.isLobby ? game.players.max : (game.players.max-1) }}</div>
                 <div class="text-center">{{ game.spectators }}</div>
             </div>
 

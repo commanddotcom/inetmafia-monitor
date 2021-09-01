@@ -7,7 +7,7 @@ export default {
             if (avatar == null) {
                 avatar = 0;
             }
-            return 'https://inetmafia.ru/u_file/avatar_micro/'+avatar+'.jpg';
+            return `https://inetmafia.ru/u_file/avatar_micro/${ avatar }.jpg`;
         }
     }
 }

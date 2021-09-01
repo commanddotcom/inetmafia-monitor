@@ -53,6 +53,15 @@ export default {
 
 <template>
     <div>
-        <component :is="layout" :settings="settings" :lobbyList="lobbyList" :gameDetails="gameDetails" :gameID="gameID" :maxTitleLength="maxTitleLength" @openGame="openGame" @closeGame="closeGame"></component>
+        <component 
+            :is="layout" 
+            :settings="settings" 
+            :lobbyList="lobbyList" 
+            :gameDetails="gameDetails" 
+            :gameID="gameID" 
+            :maxTitleLength="maxTitleLength" 
+            @openGame="openGame" 
+            @closeGame="closeGame">
+        </component>
     </div>
 </template>
