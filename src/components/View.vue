@@ -1,5 +1,5 @@
 <script>
-const ls = require('local-storage');
+import ls from 'local-storage';
 import Lobby from './Layouts/Lobby.vue';
 import LobbySkeleton from './Layouts/LobbySkeleton.vue';
 import Game from './Layouts/Game.vue';

@@ -1,7 +1,7 @@
 <script>
 import View from './View.vue';
 import Settings from './Layouts/Settings.vue';
-import {Tabs, Tab} from 'vue-tabs-component';
+import { Tabs, Tab } from 'vue-tabs-component';
 
 
 export default {

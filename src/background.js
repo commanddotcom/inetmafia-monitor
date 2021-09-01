@@ -1,17 +1,17 @@
-import Notification from './class/notification.js';
-import Fetch from './class/fetch.js';
-
-var settings = JSON.parse(window.localStorage.appSettings);
+import ls from 'local-storage';
+import Notification from './lib/notification.js';
+import Fetch from './lib/fetch.js';
 
 class Main {
     lobbyList = [];
     notificationsQueue = [];
-
     loop = () => {
         Fetch.fetchLobby();
         Notification.sendNotifications();
     }
 }
+
+let settings = ls('appSettings');
 
 if (settings.enabledExtenstion) {
     const MainInstance = new Main();

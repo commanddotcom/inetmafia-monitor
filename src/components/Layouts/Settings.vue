@@ -1,30 +1,38 @@
 <script>
+import ls from 'local-storage';
 import Switches from 'vue-switches';
 
 export default {
     name: 'Settings',
-    components: {
-        Switches
-    },
+    components: { Switches },
     data() {
-        return JSON.parse(window.localStorage.appSettings);
+        return {
+            appSettings: ls('appSettings'),
+            rates: {
+                1: '1 сек',
+                2: '2 сек',
+                3: '3 сек',
+                15: '15 сек',
+                30: '30 сек',
+                60: '1 мин',
+                120: '2 мин',
+                600: '10 мин',
+            }
+        }; 
     },
     watch: {
-        enabledExtenstion: function (newValue, oldValue) {
-            this.$data.enabledExtenstion = newValue;
-            window.localStorage.appSettings = JSON.stringify(this.$data);
-        },
-        enabledDisplayAutoGame: function (newValue, oldValue) {
-            this.$data.enabledDisplayAutoGame = newValue;
-            window.localStorage.appSettings = JSON.stringify(this.$data);
-        },
-        interval: function (newValue, oldValue) {
-            this.$data.interval = newValue;
-            window.localStorage.appSettings = JSON.stringify(this.$data);
+        appSettings: {
+            handler(val){
+                this.save();
+            },
+            deep: true
         }
     },
     methods: {
         save() {
+            ls('appSettings', this.$data.appSettings)
+        },
+        update() {
             this.$ga.pageview('/settings/save');
             chrome.runtime.reload()
         }
@@ -35,29 +43,22 @@ export default {
     <div class="settings-wrap">
         <div class="settings-row">
             <div>Включить / выключить мониторинг</div>
-            <div><switches v-model="enabledExtenstion" theme="bootstrap" color="success"></switches></div>
+            <div><switches v-model="appSettings.enabledExtenstion" theme="bootstrap" color="success"></switches></div>
         </div>
         <div class="settings-row">
             <div>Показывать авто-игры</div>
-            <div><switches v-model="enabledDisplayAutoGame" theme="bootstrap" color="success"></switches></div>
+            <div><switches v-model="appSettings.enabledDisplayAutoGame" theme="bootstrap" color="success"></switches></div>
         </div>
         <div class="settings-row">
             <div>Частота обновления данных</div>
             <div>
-                <select v-model="interval">
-                    <option value="1000">1 сек</option>
-                    <option value="2000">2 сек</option>
-                    <option value="3000">3 сек</option>
-                    <option value="15000">15 сек</option>
-                    <option value="30000">30 сек</option>
-                    <option value="60000">1 мин</option>
-                    <option value="120000">2 мин</option>
-                    <option value="600000">10 мин</option>
+                <select v-model="appSettings.interval">
+                    <option v-for="(rate, index) in rates" :value="index*1000">{{ rate }}</option>
                 </select>
             </div>
         </div>
         <div class="game-buttom-controll">
-            <a href="#" v-on:click="save" class="button2">Применить</a>
+            <a href="#" v-on:click="update" class="button2">Применить</a>
         </div>
     </div>
 </template>

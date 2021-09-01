@@ -1,4 +1,4 @@
-const ls = require('local-storage');
+import ls from 'local-storage';
 
 const axios = require('axios');
 const endpoint = 'https://inetmafia.ru/api';
@@ -25,10 +25,10 @@ export default {
             headers: headers
         })
         .then((response) => {
-            if (typeof response.data.data.lobby === 'object') {
+            if (typeof response?.data?.data?.lobby === 'object') {
                 this.lobbyList = response.data.data.lobby; 
                 let tablesToGo = 0;
-                for(var k in this.lobbyList) {
+                for(let k in this.lobbyList) {
                     
                     this.lobbyList[k].author_ = {
                         avatar: null
@@ -38,8 +38,8 @@ export default {
                         tablesToGo++;
                     }
                 
-                    var playersNotDead = 0;
-                    for (var y in this.lobbyList[k].players.players) {
+                    let playersNotDead = 0;
+                    for (let y in this.lobbyList[k].players.players) {
                         if (!this.lobbyList[k].players.players[y].isDead) {
                             playersNotDead++;
                         }
@@ -50,20 +50,19 @@ export default {
                     this.lobbyList[k].playersNotDead = playersNotDead;
                 }
                 ls('lobby', this.lobbyList);
-
                 chrome.browserAction.setBadgeText({text: tablesToGo.toString()});
-
                 if (!tablesToGo) {
                     chrome.browserAction.setBadgeBackgroundColor({ color: [204, 204, 0, 255] });
                 } else {
                     chrome.browserAction.setBadgeBackgroundColor({ color: [0, 153, 0, 255] });
                 }
-                
-
+            } else {
+                console.error(`Error! Invalid ${ endpoint } response: `);
+                console.error(response);
             }
         })
         .catch((error) => {
-            console.log(error);
+            console.error(error);
         });
     }
 }
