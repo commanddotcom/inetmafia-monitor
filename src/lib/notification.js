@@ -22,11 +22,7 @@ export default {
         ls('notifications', notifications)
     },
     checkIfNotificationExists(gameId) {
-        let notifications = this.getNotifications();
-        if (gameId in notifications) {
-            return true;
-        }
-        return false;
+        return gameId in this.getNotifications();
     },
     sendNotifications() {
         let lobby = ls('lobby');
