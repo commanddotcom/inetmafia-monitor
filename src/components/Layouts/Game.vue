@@ -38,7 +38,7 @@ export default {
         <div>
             <div class="game-header">Стол # {{ gameDetails.id }} - 
                 <span v-if="gameDetails.title.length > maxTitleLength">{{ gameDetails.title.substring(0,maxTitleLength) }}...</span>
-                <span v-else>{{ gameDetails.title }} ({{ gameDetails.playersNotDead }}/{{ gameDetails.players.max }})</span>
+                <span v-else>{{ gameDetails.title }} ({{ gameDetails.players.max == 11 && !gameDetails.isLobby ? (gameDetails.playersNotDead-1) : gameDetails.playersNotDead }}/{{  gameDetails.players.max == 11 && !gameDetails.isLobby ? (gameDetails.players.max-1) : gameDetails.players.max }})</span>
             </div>
             <div class="game-header secondary" v-if="!gameDetails.isLobby">
                 Ведущий: {{ gameDetails.author }}

@@ -9,6 +9,13 @@ export default {
     methods: {
         fetchLobby() {
             this.lobbyList = ls('lobby');
+            if (this.gameDetails) {
+                let index = this.lobbyList.map(function(e) { 
+                    return typeof e !== 'object' ? false : e.id;
+                }).indexOf(this.gameDetails.id);
+                this.gameDetails = this.lobbyList[index];
+            }
+
             if (this.layout === LobbySkeleton) {
                 this.layout = Lobby;
             }
