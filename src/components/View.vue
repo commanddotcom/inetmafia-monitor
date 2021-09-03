@@ -13,7 +13,11 @@ export default {
                 let index = this.lobbyList.map(function(e) { 
                     return typeof e !== 'object' ? false : e.id;
                 }).indexOf(this.gameDetails.id);
-                this.gameDetails = this.lobbyList[index];
+                if (index === -1) {
+                    this.closeGame();
+                } else {
+                    this.gameDetails = this.lobbyList[index];
+                }
             }
 
             if (this.layout === LobbySkeleton) {

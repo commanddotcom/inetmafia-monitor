@@ -1,6 +1,6 @@
 {
   "name": "inetmafia",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "Monitoring game lobby",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
