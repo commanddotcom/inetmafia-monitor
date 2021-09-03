@@ -1,5 +1,16 @@
 import ls from 'local-storage';
 
+const defaultSettings = { // default values
+    enabledExtenstion: true,
+    enabledDisplayAutoGame: false,
+    interval: 3000,
+    sortByOption: 'isLobby'
+};
+
+const saveSettings = function(settings) {
+    ls('appSettings', settings);
+}
+
 const axios = require('axios');
 const endpoint = 'https://inetmafia.ru/api';
 const headers = {
@@ -26,13 +37,22 @@ const data = {
 };
 const minMembersOfActualTable = 2;
 
-if (!ls('appSettings')) {
-    ls('appSettings', { // default values
-        enabledExtenstion: true,
-        enabledDisplayAutoGame: false,
-        interval: 3000,
-    });
+let appSettings = ls('appSettings');
+if (appSettings) {
+    let updateSettings = false;
+    for (let key in defaultSettings) {
+        if (key in appSettings === false) {
+            updateSettings = true;
+            appSettings[key] = defaultSettings[key];
+        }
+    }
+    if (updateSettings) {
+        saveSettings(appSettings);
+    }
+} else {
+    saveSettings(defaultSettings);
 }
+
 
 export default {
     fetchLobby() {
@@ -64,6 +84,11 @@ export default {
                     }
                     this.lobbyList[k].playersNotDead = playersNotDead;
                 }
+                
+                this.lobbyList.sort((a, b) => {
+                    return a[appSettings.sortByOption] - b[appSettings.sortByOption] || b.players.players.length - a.players.players.length;
+                });
+                
                 ls('lobby', this.lobbyList);
                 chrome.browserAction.setBadgeText({text: tablesToGo.toString()});
                 if (!tablesToGo) {

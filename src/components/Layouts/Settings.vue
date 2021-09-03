@@ -17,6 +17,10 @@ export default {
                 60: '1 мин',
                 120: '2 мин',
                 600: '10 мин',
+            },
+            sortBy: {
+                id: 'По номеру',
+                isLobby: 'По состоянию'
             }
         }; 
     },
@@ -54,6 +58,14 @@ export default {
             <div>
                 <select v-model="appSettings.interval">
                     <option v-for="(rate, index) in rates" :value="index*1000">{{ rate }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="settings-row">
+            <div>Сортировка столов</div>
+            <div>
+                <select v-model="appSettings.sortByOption">
+                    <option v-for="(name, column) in sortBy" :value="column">{{ name }}</option>
                 </select>
             </div>
         </div>
