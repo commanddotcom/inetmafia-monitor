@@ -171,6 +171,10 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    select {
+        border-radius: 3px;
+        padding: 1px 5px 1px 0;
+    }
 }
 
 .settings-row+.settings-row {
