@@ -9,6 +9,9 @@ export default {
     methods: {
         fetchLobby() {
             this.lobbyList = ls('lobby');
+            this.lobbyList.sort((a, b) => {
+                return a[this.settings.sortByOption] - b[this.settings.sortByOption] || b.players.players.length - a.players.players.length;
+            });
             if (this.gameDetails) {
                 let index = this.lobbyList.map(function(e) { 
                     return typeof e !== 'object' ? false : e.id;

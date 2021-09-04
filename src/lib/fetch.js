@@ -85,10 +85,6 @@ export default {
                     this.lobbyList[k].playersNotDead = playersNotDead;
                 }
                 
-                this.lobbyList.sort((a, b) => {
-                    return a[appSettings.sortByOption] - b[appSettings.sortByOption] || b.players.players.length - a.players.players.length;
-                });
-                
                 ls('lobby', this.lobbyList);
                 chrome.browserAction.setBadgeText({text: tablesToGo.toString()});
                 if (!tablesToGo) {
