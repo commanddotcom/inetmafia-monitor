@@ -93,12 +93,12 @@ export default {
                     chrome.browserAction.setBadgeBackgroundColor({ color: [0, 153, 0, 255] });
                 }
             } else {
-                console.error(`Error! Invalid ${ endpoint } response: `);
-                console.error(response);
+                console.log(`Error! Invalid ${ endpoint } response: `);
+                console.log(response);
             }
         })
         .catch((error) => {
-            console.error(error);
+            console.log(error);
         });
     }
 }
