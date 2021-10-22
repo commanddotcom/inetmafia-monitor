@@ -1,13 +1,14 @@
 <script>
 import View from './View.vue';
 import Settings from './Layouts/Settings.vue';
+import Share from './Layouts/Share.vue';
 import { Tabs, Tab } from 'vue-tabs-component';
 
 
 export default {
     name: 'App',
     components: {
-        Settings, Tabs, Tab
+        Settings, Tabs, Tab, Share
     },
     data() {
         return {
@@ -27,6 +28,9 @@ export default {
         </tab>
         <tab name="Настройки">
             <settings></settings>
+        </tab>
+        <tab name="Рассказать другу">
+            <share></share>
         </tab>
     </tabs>
 </div>
